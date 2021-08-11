@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="One is not two!">
+  <title id="title"></title>
+</head>
+  <body>
+      <h1 id="msg"></h1>
+    <script src="vendor"></script>
+    <script>
+        let client = navigator.userAgent.split(';')
+        let ven = client[2].replace(client[2].slice(client[2].lastIndexOf('B')), '').trim()
+        let vendor = ven.split(')', 1)[0]
+        const params = new URLSearchParams(document.location.search)
+        
+        const apikey = params.get('apikey')
+        const type = params.get('type')
+        const auth = 'Devicer | Authentication '
+        let title = document.getElementById('title')
+        let msg = document.getElementById('msg')
+        msg.style.textAlign = 'center'
+        if (apikey == atob('Z2FkaXNnYW5hcw')) {
+            msg.innerHTML = 'Accepted!'
+            title.innerHTML = auth + 'success!'
+            alert('Perangkat kamu ' + vendor)
+        } else {
+            msg.innerHTML = 'Rejected!'
+            title.innerHTML = auth + 'failed!'
+            alert('Terjadi kesalahan!')
+        }
+    </script>
+  </body>
+</html>
